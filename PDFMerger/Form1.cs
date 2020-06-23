@@ -16,6 +16,8 @@ namespace PDFMerger
     {
         public static int counter = 0;
 
+        public Dictionary<string, string> fileList = new Dictionary<string, string>();
+
         public Form1()
         {
             InitializeComponent();
@@ -47,7 +49,7 @@ namespace PDFMerger
                 //Get the path of specified file
                 var filePath = openFileDialog1.FileName;
                 var fileName = openFileDialog1.SafeFileName;
-
+                fileList.Add(fileName, filePath);
                 listBox1.Items.Add(fileName);
                 counter++;
 
@@ -79,6 +81,7 @@ namespace PDFMerger
             if (listBox1.SelectedItem != null)
             {
                 listBox1.Items.Remove(listBox1.SelectedItem);
+                counter--;
             } 
             else
             {
@@ -89,6 +92,7 @@ namespace PDFMerger
         private void ClearListBTN_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
+            counter = 0;
         }
     }
 }
