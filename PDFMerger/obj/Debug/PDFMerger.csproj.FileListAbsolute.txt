@@ -1,0 +1,11 @@
+C:\Users\Matt Dittmer\source\repos\PDFMerger\PDFMerger\bin\Debug\PDFMerger.exe.config
+C:\Users\Matt Dittmer\source\repos\PDFMerger\PDFMerger\bin\Debug\PDFMerger.exe
+C:\Users\Matt Dittmer\source\repos\PDFMerger\PDFMerger\bin\Debug\PDFMerger.pdb
+C:\Users\Matt Dittmer\source\repos\PDFMerger\PDFMerger\obj\Debug\PDFMerger.csprojAssemblyReference.cache
+C:\Users\Matt Dittmer\source\repos\PDFMerger\PDFMerger\obj\Debug\PDFMerger.Form1.resources
+C:\Users\Matt Dittmer\source\repos\PDFMerger\PDFMerger\obj\Debug\PDFMerger.Properties.Resources.resources
+C:\Users\Matt Dittmer\source\repos\PDFMerger\PDFMerger\obj\Debug\PDFMerger.csproj.GenerateResource.cache
+C:\Users\Matt Dittmer\source\repos\PDFMerger\PDFMerger\obj\Debug\PDFMerger.csproj.CoreCompileInputs.cache
+C:\Users\Matt Dittmer\source\repos\PDFMerger\PDFMerger\obj\Debug\PDFMerger.exe
+C:\Users\Matt Dittmer\source\repos\PDFMerger\PDFMerger\obj\Debug\PDFMerger.pdb
+C:\Users\Matt Dittmer\source\repos\PDFMerger\PDFMerger\obj\Debug\PDFMerger.fileList.resources
