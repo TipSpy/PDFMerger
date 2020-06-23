@@ -11,13 +11,6 @@ using System.Windows.Forms;
 
 namespace PDFMerger
 {
-    public class fileList : IEquatable<File>
-    {
-        public string FileName { get; set; }
-
-        public int FilePath { get; set; }
-    }
-
 
     public partial class Form1 : Form
     {
@@ -56,6 +49,7 @@ namespace PDFMerger
                 var fileName = openFileDialog1.SafeFileName;
 
                 listBox1.Items.Add(fileName);
+                counter++;
 
             }
         }
