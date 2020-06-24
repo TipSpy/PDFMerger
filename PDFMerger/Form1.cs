@@ -8,37 +8,66 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using PdfSharp;
+using PdfSharp.Drawing;
+using PdfSharp.Pdf;
+using PdfSharp.Pdf.IO;
 
 namespace PDFMerger
 {
 
     public partial class Form1 : Form
     {
-        public static int counter = 0;
 
         public Dictionary<string, string> fileList = new Dictionary<string, string>();
 
         public Form1()
         {
             InitializeComponent();
+            this.Text = "PDF Merger";
         }
 
         private void MergeBtn_Click_1(object sender, EventArgs e)
         {
-            if (counter >= 2)
+            if (fileList.Count >= 2)
             {
-                if (textBox1.Text != "")
+                //if (textBox1.Text != "")
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    _ = MessageBox.Show("This is when it would merge! The filename would be " + textBox1.Text + ".pdf");
+                    string outPath = saveFileDialog1.FileName;
+
+                    var files = fileList.Values.ToArray();
+
+                    PdfDocument outputDocument = new PdfDocument();
+
+                    foreach (string file in files)
+                    {
+                        PdfDocument inputDocument = PdfReader.Open(file, PdfDocumentOpenMode.Import);
+
+                        int length = inputDocument.PageCount;
+                        for (int index = 0; index < length; index++)
+                        {
+                            PdfPage page = inputDocument.Pages[index];
+                            outputDocument.AddPage(page);
+                        }
+                    }
+
+                    //outputDocument.Save(textBox1.Text + ".pdf");
+                    outputDocument.Save(outPath);
+
+                    _ = MessageBox.Show("Merged PDF file saved at '" + outPath + "' !", "Success!");
+
                 } 
+
                 else
                 {
-                    _ = MessageBox.Show("Enter a name for your merged PDF!");
+                    _ = MessageBox.Show("Merge Cancelled!", "Cancelled!");
                 }
             }
             else
             {
-                _ = MessageBox.Show("Add at least two PDF documents first!");
+                _ = MessageBox.Show("Add at least two PDF documents first!", "Add PDFs");
             }
         }
 
@@ -51,8 +80,6 @@ namespace PDFMerger
                 var fileName = openFileDialog1.SafeFileName;
                 fileList.Add(fileName, filePath);
                 listBox1.Items.Add(fileName);
-                counter++;
-
             }
         }
 
@@ -80,19 +107,29 @@ namespace PDFMerger
         {
             if (listBox1.SelectedItem != null)
             {
+                fileList.Remove(listBox1.GetItemText(listBox1.SelectedItem));
                 listBox1.Items.Remove(listBox1.SelectedItem);
-                counter--;
             } 
             else
             {
-                MessageBox.Show("Select an item from the list!");
+                _ = MessageBox.Show("Select an item from the list!", "Select Item");
             }
         }
 
         private void ClearListBTN_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
-            counter = 0;
+            fileList.Clear();
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
